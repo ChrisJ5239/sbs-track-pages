@@ -1,0 +1,725 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sbs:source-record:1.0",
+  "title": "SBS official public daily claims source record",
+  "description": "Official Ukrainian SBS claims; not independent verification. Null means undisclosed, never zero.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "parser_version",
+    "source",
+    "source_key",
+    "source_url",
+    "stat_date",
+    "scope",
+    "period_kind",
+    "status",
+    "eligible",
+    "metrics",
+    "metric_evidence",
+    "flags"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "parser_version": {
+      "type": "string"
+    },
+    "source": {
+      "enum": [
+        "telegram_usf",
+        "telegram_madyar",
+        "website"
+      ]
+    },
+    "source_key": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "stat_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "scope": {
+      "const": "usf_grouping"
+    },
+    "period_kind": {
+      "const": "daily"
+    },
+    "published_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "source_updated_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "source_period_start": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_period_end": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "date_basis": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "published",
+        "provisional"
+      ]
+    },
+    "eligible": {
+      "type": "boolean"
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "targets_hit",
+        "targets_destroyed",
+        "strike_missions",
+        "recon_missions",
+        "personnel_hit",
+        "personnel_killed",
+        "personnel_wounded",
+        "enemy_uavs_total_hit",
+        "artillery_reported_hit",
+        "automotive_reported_hit",
+        "ew_radar_comms_reported_hit",
+        "drone_launch_positions_hit",
+        "drone_launch_positions_destroyed",
+        "antennas_hit",
+        "antennas_destroyed",
+        "air_defense_hit",
+        "air_defense_destroyed",
+        "aircraft_helicopters_hit",
+        "aircraft_helicopters_destroyed",
+        "vessels_hit",
+        "vessels_destroyed",
+        "power_hubs_hit",
+        "power_hubs_destroyed",
+        "radar_elint_comms_systems_hit",
+        "radar_elint_comms_systems_destroyed",
+        "ew_systems_hit",
+        "ew_systems_destroyed",
+        "ew_radar_mounted_portable_hit",
+        "ew_radar_mounted_portable_destroyed",
+        "fixed_wing_uavs_hit",
+        "fixed_wing_uavs_destroyed",
+        "shaheds_gerberas_hit",
+        "shaheds_gerberas_destroyed",
+        "tanks_hit",
+        "tanks_destroyed",
+        "armored_vehicles_hit",
+        "armored_vehicles_destroyed",
+        "guns_howitzers_hit",
+        "guns_howitzers_destroyed",
+        "self_propelled_artillery_hit",
+        "self_propelled_artillery_destroyed",
+        "mortars_hit",
+        "mortars_destroyed",
+        "mlrs_hit",
+        "mlrs_destroyed",
+        "logistics_engineering_special_vehicles_hit",
+        "logistics_engineering_special_vehicles_destroyed",
+        "motorcycles_buggies_hit",
+        "motorcycles_buggies_destroyed",
+        "depots_hit",
+        "depots_destroyed",
+        "strategic_infrastructure_hit",
+        "strategic_infrastructure_destroyed",
+        "tactical_infrastructure_hit",
+        "tactical_infrastructure_destroyed",
+        "shelters_dugouts_hit",
+        "shelters_dugouts_destroyed",
+        "network_equipment_cameras_hit",
+        "network_equipment_cameras_destroyed",
+        "multirotor_uavs_hit",
+        "multirotor_uavs_destroyed",
+        "ugvs_hit",
+        "ugvs_destroyed",
+        "other_hit",
+        "other_destroyed"
+      ],
+      "properties": {
+        "targets_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "总命中目标（含摧毁）"
+        },
+        "targets_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "其中摧毁"
+        },
+        "strike_missions": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "打击任务"
+        },
+        "recon_missions": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "侦察任务"
+        },
+        "personnel_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "人员伤亡合计"
+        },
+        "personnel_killed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "其中乌方称确认死亡"
+        },
+        "personnel_wounded": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "其中受伤"
+        },
+        "enemy_uavs_total_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "敌方无人机合计"
+        },
+        "artillery_reported_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "火炮（Telegram 未细分口径）"
+        },
+        "automotive_reported_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "汽车装备（Telegram 口径）"
+        },
+        "ew_radar_comms_reported_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "雷达 / ELINT / EW / 通信（Telegram 合计）"
+        },
+        "drone_launch_positions_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "无人机起飞点命中"
+        },
+        "drone_launch_positions_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "无人机起飞点摧毁"
+        },
+        "antennas_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "天线命中"
+        },
+        "antennas_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "天线摧毁"
+        },
+        "air_defense_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "SAMs / SPADs命中"
+        },
+        "air_defense_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "SAMs / SPADs摧毁"
+        },
+        "aircraft_helicopters_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "飞机 / 直升机命中"
+        },
+        "aircraft_helicopters_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "飞机 / 直升机摧毁"
+        },
+        "vessels_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "船舶命中"
+        },
+        "vessels_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "船舶摧毁"
+        },
+        "power_hubs_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "电力枢纽命中"
+        },
+        "power_hubs_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "电力枢纽摧毁"
+        },
+        "radar_elint_comms_systems_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "雷达 / ELINT / 通信系统命中"
+        },
+        "radar_elint_comms_systems_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "雷达 / ELINT / 通信系统摧毁"
+        },
+        "ew_systems_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "EW 系统命中"
+        },
+        "ew_systems_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "EW 系统摧毁"
+        },
+        "ew_radar_mounted_portable_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "车载 / 便携 EW 与雷达（官网合并口径）命中"
+        },
+        "ew_radar_mounted_portable_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "车载 / 便携 EW 与雷达（官网合并口径）摧毁"
+        },
+        "fixed_wing_uavs_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "敌方固定翼无人机命中"
+        },
+        "fixed_wing_uavs_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "敌方固定翼无人机摧毁"
+        },
+        "shaheds_gerberas_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Shahed / Gerbera命中"
+        },
+        "shaheds_gerberas_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Shahed / Gerbera摧毁"
+        },
+        "tanks_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "坦克命中"
+        },
+        "tanks_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "坦克摧毁"
+        },
+        "armored_vehicles_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "装甲车辆命中"
+        },
+        "armored_vehicles_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "装甲车辆摧毁"
+        },
+        "guns_howitzers_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "牵引火炮 / 榴弹炮命中"
+        },
+        "guns_howitzers_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "牵引火炮 / 榴弹炮摧毁"
+        },
+        "self_propelled_artillery_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "自行火炮命中"
+        },
+        "self_propelled_artillery_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "自行火炮摧毁"
+        },
+        "mortars_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "迫击炮命中"
+        },
+        "mortars_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "迫击炮摧毁"
+        },
+        "mlrs_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "多管火箭炮命中"
+        },
+        "mlrs_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "多管火箭炮摧毁"
+        },
+        "logistics_engineering_special_vehicles_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "后勤 / 工程 / 特种车辆 / 加油车命中"
+        },
+        "logistics_engineering_special_vehicles_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "后勤 / 工程 / 特种车辆 / 加油车摧毁"
+        },
+        "motorcycles_buggies_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "摩托车 / 军用越野车命中"
+        },
+        "motorcycles_buggies_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "摩托车 / 军用越野车摧毁"
+        },
+        "depots_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "弹药 / 燃料 / 装备库命中"
+        },
+        "depots_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "弹药 / 燃料 / 装备库摧毁"
+        },
+        "strategic_infrastructure_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "战略基础设施命中"
+        },
+        "strategic_infrastructure_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "战略基础设施摧毁"
+        },
+        "tactical_infrastructure_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "战术基础设施命中"
+        },
+        "tactical_infrastructure_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "战术基础设施摧毁"
+        },
+        "shelters_dugouts_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "掩体 / 地堡命中"
+        },
+        "shelters_dugouts_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "掩体 / 地堡摧毁"
+        },
+        "network_equipment_cameras_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "网络设备 / 摄像头命中"
+        },
+        "network_equipment_cameras_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "网络设备 / 摄像头摧毁"
+        },
+        "multirotor_uavs_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "敌方多旋翼无人机命中"
+        },
+        "multirotor_uavs_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "敌方多旋翼无人机摧毁"
+        },
+        "ugvs_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "敌方无人地面车辆命中"
+        },
+        "ugvs_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "敌方无人地面车辆摧毁"
+        },
+        "other_hit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "其他命中"
+        },
+        "other_destroyed": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "其他摧毁"
+        }
+      }
+    },
+    "metric_evidence": {
+      "type": "object"
+    },
+    "raw_categories": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "eligible": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "stat_date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    }
+  ]
+}
